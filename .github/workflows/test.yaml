@@ -5,7 +5,7 @@ on:
 
 jobs:
   job1:
-    uses: https://github.com/vuvandang1995/reusable-workflows/blob/main/.github/workflows/workflow-B.yml@v1
+    uses: vuvandang1995/reusable-workflows/blob/main/.github/workflows/workflow-B.yml@v1
 
   job2:
     runs-on: ubuntu-latest
