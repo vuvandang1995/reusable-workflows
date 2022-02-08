@@ -11,7 +11,7 @@ jobs:
     steps:
     - id: test
       run: |
-        echoo "Run unit-test for ${{ github.event.client_payload.module }}"
+        echo "Run unit-test for ${{ github.event.client_payload.module }}"
 
   # Scan code with SonarQube
   code_quality:
