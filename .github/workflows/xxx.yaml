@@ -13,4 +13,4 @@ jobs:
         with:
           token: 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
           repository: vuvandang1995/reusable-workflows
-          event-type: run-merged
+          event-type: run-pr-merged
