@@ -1,0 +1,16 @@
+name: trigger pipeline
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: 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
+          event-type: run-pr-merged
+          client-payload: '{"module": "aaa"}'
