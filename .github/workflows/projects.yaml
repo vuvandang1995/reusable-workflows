@@ -7,6 +7,7 @@ on:
 jobs:
   # Run unit test
   unit_test:
+    name: unit_test-${{ github.event.client_payload.module }}
     runs-on: ubuntu-latest
     steps:
     - id: test
@@ -14,6 +15,7 @@ jobs:
         echo "Run unit-test for ${{ github.event.client_payload.module }}"
   # Scan code with SonarQube
   code_quality:
+    name: code_quality-${{ github.event.client_payload.module }}
     needs: [ unit_test ]
     runs-on: ubuntu-latest
     steps:
@@ -21,6 +23,7 @@ jobs:
         echo "Running SonarQube for ${{ github.event.client_payload.module }}"
   # Build Dockerfile to validate code
   build:
+    name: build-${{ github.event.client_payload.module }}
     needs: [ code_quality ]
     runs-on: ubuntu-latest
     steps:
@@ -37,6 +40,7 @@ jobs:
           cd ${{ github.event.client_payload.module }} && docker build -t ${{ steps.vars.outputs.image_name }}:${{ steps.vars.outputs.sha_short }} -f Dockerfile ../
   
   post_check_pr:
+    name: noti-${{ github.event.client_payload.module }}
     needs: [unit_test, code_quality, build]
     runs-on: ubuntu-latest
     env: 
