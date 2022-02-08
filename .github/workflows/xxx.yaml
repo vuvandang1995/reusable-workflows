@@ -11,6 +11,6 @@ jobs:
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v1
         with:
-          token: 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
+          token: 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
           event-type: run-pr-merged
           client-payload: '{"module": "aaa"}'
